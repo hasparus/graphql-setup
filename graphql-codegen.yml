@@ -1,0 +1,29 @@
+schema:
+  - https://api.spacex.land/graphql
+documents:
+  - "./src/**/*.gql"
+generates:
+  "./src/graphql-types.generated.ts":
+    plugins:
+      - typescript
+  "./src":
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: graphql-types.generated.ts
+      extension: .generated.ts
+    plugins:
+      - typescript-operations
+      - typescript-react-query
+    cacheDir: ./.cache/gql-generated
+config:
+  pureMagicComment: true
+  enumsAsTypes: true
+  documentMode: "string"
+  strictScalars: true
+  fetcher: ~/gqlClient#gqlClient
+  scalars:
+    # Scalars for SpaceX Land API — I didn't test them!
+    Date: Date
+    ObjectID: string
+    timestamptz: Date
+    uuid: string

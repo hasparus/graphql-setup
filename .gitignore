@@ -1,0 +1,4 @@
+node_modules
+
+# This would be usually gitignored and generated in `"postinstall"` step.
+# **/*.generated.*
